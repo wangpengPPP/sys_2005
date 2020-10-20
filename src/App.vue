@@ -1,32 +1,22 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <!-- <div id="app">
+<video autoplayloopposter="polina.jpg" id="bgvid" autoplay muted loop>
+ 
+<source src="./video621.mp4" type="video/mp4">
+ 
+</video> -->
+  <router-view />
+  <!-- </div> -->
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+/* #bgvid{
 
-#nav {
-  padding: 30px;
-}
+position: fixed; right:0; bottom:0;
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+min-width:100%; min-height:100%; width: auto;height:
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+auto;z-index:-100; background-size: cover;
+
+} */
 </style>
