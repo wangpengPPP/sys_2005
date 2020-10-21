@@ -57,10 +57,16 @@
                 千锋管理系统
               </div></el-col
             >
-            <el-col :span="6"
-              ><div class="grid-content bg-purple">
-                <span>欢迎您:</span><a href="">五五开</a>
-                <a href="" style="color:red">退出</a>
+            <el-col :span="6">
+              <div class="grid-content bg-purple">
+                <el-avatar
+                  shape="square"
+                  :size="40"
+                  :src="squareUrl"
+                ></el-avatar>
+                <span>欢迎您:</span>
+                <b class="nickname">{{ userInfo.nickname }}</b>
+                <span class="quit" @click="quit">退出</span>
               </div></el-col
             >
           </el-row>
@@ -71,13 +77,28 @@
   </div>
 </template>
 <script>
+import { getLoginLog } from "@/api";
+import { mapState } from "vuex";
 export default {
+  computed: {
+    ...mapState(["userInfo"])
+  },
   data() {
     return {
       isCollapse: true
     };
   },
+  mounted() {
+    getLoginLog().then(res => {
+      console.log(res);
+    });
+  },
   methods: {
+    quit() {
+      localStorage.removeItem("qf2005-userInfo");
+      localStorage.removeItem("qf2005-token");
+      this.$router.push("/login");
+    },
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
@@ -88,6 +109,10 @@ export default {
 };
 </script>
 <style scoped>
+.quit {
+  cursor: pointer;
+  color: red;
+}
 .el-header {
   padding: 0 0;
 }
@@ -161,6 +186,9 @@ body > .el-container {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
+}
+.el-avatar {
+  vertical-align: middle;
 }
 /* .el-carousel{
   width: 100px;
