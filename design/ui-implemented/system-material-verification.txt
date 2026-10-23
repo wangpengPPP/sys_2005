@@ -1,0 +1,28 @@
+2026-10-16 系统沉浸光感与正文磨砂检查
+
+官方适用范围：
+https://developer.huawei.com/consumer/cn/doc/HarmonyOS-Guides/arkts-immersive-light-sense-enable
+普通组件的 systemMaterial 仅在导航标题栏、横向 Tabs 的底部 TabBar 内生效；正文卡片不在该范围内。
+用户已确认：已完成/待办统一为随深浅主题变化的磨砂卡片，不要求其响应系统光感强弱。
+
+实现：
+- 底栏和新增按钮共享 uiMaterial.ImmersiveMaterial 的 THIN 系统预设，不设置材质着色。
+- 保留实际 TabBar 承载及已有分离/合入动画；设备不支持时保留原兜底。
+- 两块正文区域统一用 backgroundBlurStyle(BlurStyle.Thin)，显式跟随应用深浅色。
+- 窗口不活跃时停用正文磨砂并使用主题底色；不叠加 systemMaterial。
+- 修正注释：ImmersiveStyle 是厚薄，不是用户光感强弱，设置 style 不会阻断系统强弱响应。
+
+验证：
+- assembleHap debug 构建成功（17s692ms），已安装至连接的 Huawei Pura 70 Pro。
+- 浅色模式分别切换系统强/均衡/弱，回到同一 App 页面检查，不重启 App。
+- 强档底栏与新增按钮呈通透边缘、高光；弱档转为更实的背景。正文磨砂保持一致。
+- 深色模式下正文卡片和底栏均无白底，文字可读。
+- 系统光感已恢复检查前的强档，应用主题已恢复深色；未改动任务记录。
+
+有效实机截图：
+material-light-strong.jpeg
+material-light-balanced.jpeg
+material-light-weak.jpeg
+material-dark-strong.jpeg
+
+限制：当前 SDK/系统对正文卡片不开放原生沉浸光感。磨砂效果并非原生沉浸光感强弱联动。

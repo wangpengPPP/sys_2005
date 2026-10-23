@@ -1,0 +1,9 @@
+Generated with the built-in ImageGen tool.
+
+Use case: logo-brand.
+Asset type: a finished launcher icon for a HarmonyOS personal notes and friendly reminders app named 零星小记, supplied as one square 1024 x 1024 image.
+Primary request: design a distinctive, beautifully simple app icon that combines a small note with a little star, expressing catching fleeting thoughts. The existing app uses soft periwinkle, blue and lavender.
+Composition: one large ivory-white softly rounded note sheet, gently tilted 7 degrees counterclockwise, centered with a small optical adjustment left. Give the note a subtly curled lower-right paper corner, and exactly two short broad indigo horizontal strokes suggesting writing. A single plump four-point warm pale-gold sparkle overlaps the upper-right edge of the note. Keep this one harmonious compact emblem within the central 64 percent of the canvas, balanced and clearly recognizable at 48 pixels.
+Background: opaque full-bleed square with a refined smooth saturated periwinkle-to-cornflower-blue gradient, slightly lighter toward the upper left. No outer rounded-corner frame, no surrounding canvas, no transparency: the phone launcher will apply its own mask.
+Style: premium restrained 2.5D icon illustration, clean geometric silhouette, soft ceramic-paper surfaces, very subtle ambient shadow and edge highlights, crisp uncluttered edges. Warm, friendly, calm and modern, not toy-like and not excessively glossy. Strong contrast between the white note, gold star and blue background.
+Constraints: produce only the icon artwork, not a presentation board, not a phone mockup, not multiple variations. No letters, words, Chinese characters, numbers, logo text, watermark, border, extra sparkles, extra objects, gradients inside tiny strokes, or photographic textures. No glow haze. The final square must be filled edge to edge with the icon background.

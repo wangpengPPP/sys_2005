@@ -1,0 +1,70 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:/Users/Administrator/.ohos/config/default_lingxingxiaoji_k5Xt76EKLMY58Ky1hFmGWgOT6-fxL_tjc_9NdDZNaAU=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B2BC2B90221D5294237BF809987F9DC68B8FDADA3C2B73F16C289ED6FB354D4168A2A300865B685",
+          "profile": "./lingxingxiaoji-debugDebug.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/Administrator/.ohos/config/default_lingxingxiaoji_k5Xt76EKLMY58Ky1hFmGWgOT6-fxL_tjc_9NdDZNaAU=.p12",
+          "storePassword": "0000001B414A9A823BA7C11D58066C9DC83BFDB696C33FD2306AD9B3B6BDFFCC1C0F7E44EFACF59A4BA686"
+        }
+      },
+      {
+        "name": "release",
+        "type": "HarmonyOS",
+        "material": {
+          "storeFile": "C:/Users/Administrator/.ohos/release/lingxingxiaoji-release.p12",
+          "storePassword": "0000001AF91B0F9C46899C3738EFB834948CB59E7703D4879749FBAEFDA0CF7821D25E56692EFAA558D4",
+          "keyAlias": "releaseKey",
+          "keyPassword": "0000001AD80632D29B082915CD6902B53A86813C81E8B94F01DC1DDA03BF19F7EDFEE27B3BFF15D0A31E",
+          "signAlg": "SHA256withECDSA",
+          "profile": "C:/Users/Administrator/.ohos/release/lingxingxiaoji-releaseRelease.p7b",
+          "certpath": "C:/Users/Administrator/.ohos/release/lingxingxiaoji-release.cer"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        // 打上架包（.app）时临时改成 "release"，打完已切回 "default"（日常调试用）
+        "signingConfig": "default",
+        "targetSdkVersion": "26.0.0",
+        "compatibleSdkVersion": "6.1.1(24)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "phone",
+      "tablet",
+      "2in1"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "requestPermissions": [
+      {
+        // 好友互发待办需要联服务端；当前传输层还跑在本地模拟（USE_REMOTE=false），
+        // 权限先声明好，接后端那天不用再改清单
+        "name": "ohos.permission.INTERNET"
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO"
+      },
+      {
+        // 截止提醒走的是系统「后台代理提醒」：登记完就可以退出 App，
+        // 到点由系统弹通知。这是唯一能在 App 没运行时按时提醒的本地方案
+        "name": "ohos.permission.PUBLISH_AGENT_REMINDER"
+      },
+      {
+        // 智感握姿：读系统识别出的「握持手 / 操作手」，底部新增按钮跟着左右换边。
+        // 这个权限是 system_grant + normal 级，声明即生效，不会弹授权框；
+        // 配套的 ACTIVITY_MOTION 是 user_grant，本功能用不上，别多要
+        "name": "ohos.permission.DETECT_GESTURE"
+      }
+    ],
+    "metadata": [
+      {
+        // 页面颜色由 AppStorage 状态驱动；原生主题切换只更新颜色，保留当前页签和页面状态。
+        "name": "configColorModeChangePerformanceInArkUI",
+        "value": "true"
+      },
+      {
+        // 应用级沉浸光感开关：enable 后 Dialog/Toast/Toggle/Select/Chip 等组件默认带系统材质
+        // 要求 targetAPIVersion >= 26.0.0，且仅在 entry 类型 module 中生效
+        "name": "ohos.arkui.UIMaterial.state",
+        "value": "enable"
+      },
+      {
+        // 华为账号（Account Kit）接入必需：AGC 控制台 → 项目设置 → 常规 → 应用 → OAuth 2.0 客户端 ID
+        // 必须与 service/agc/AgcConfig.ets 里的 AGC_CLIENT_ID 完全一致
+        "name": "client_id",
+        "value": "6917618950985710167"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "EntryBackupAbility",
+        "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
+        "type": "backup",
+        "exported": false,
+        "metadata": [
+          {
+            "name": "ohos.extension.backup",
+            "resource": "$profile:backup_config"
+          }
+        ],
+      },
+      {
+        // 桌面卡片（服务卡片）的提供方。卡片跑在自己的进程里，
+        // 数据由这里的 FormCardService 现算现喂 —— 见 form/TodoCardAbility.ets
+        "name": "TodoCardAbility",
+        "srcEntry": "./ets/form/TodoCardAbility.ets",
+        "description": "$string:form_desc",
+        "icon": "$media:startIcon",
+        "label": "$string:form_display_name",
+        "type": "form",
+        // 卡片是 launcher（另一个应用）拉起来的，必须 exported
+        "exported": true,
+        "metadata": [
+          {
+            "name": "ohos.extension.form",
+            "resource": "$profile:form_config"
+          }
+        ]
+      }
+    ]
+  }
+}

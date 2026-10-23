@@ -1,0 +1,12 @@
+{
+  "app": {
+    "bundleName": "com.example.lingxingxiaoji",
+    "vendor": "example",
+    // versionCode 必须比上一个上传给 AGC 的包大，否则上传会被拒（同版本不允许重复）
+    "versionCode": 1000002,
+    "versionName": "1.0.1",
+    "buildVersion": "1",
+    "icon": "$media:layered_image",
+    "label": "$string:app_name"
+  }
+}

@@ -1,0 +1,30 @@
+2026-10-16 UI refinement verification
+
+Build: debug entry assembleHap successful; signed HAP installed on connected Huawei Pura 70 Pro (HarmonyOS API 26).
+
+Changes:
+- Centered date pill with previous/next day, calendar picker, return-to-today action and actual daily counts/progress.
+- Date key is reactive so the pill label changes together with its task list.
+- Removed the repeated selected-theme description below the three appearance choices.
+- Bottom dock and create button share native ImmersiveMaterial and a 64 vp height.
+- Dock is hosted in a bottom TabBar builder, the supported native material scope.
+- Explicit animation keyframes coordinate bar width, button position, opacity, rotation and stretch/squeeze.
+- Unsupported devices retain palette-based background/border styling.
+
+Device checks:
+- Previous day -> Yesterday / October 15 / one existing pending item; next day -> Today / October 16 / zero items.
+- Calendar picker opens from the date pill; cancel and return-to-today work.
+- Light, dark and follow-system choices can be selected; the extra description is absent.
+- Native dock and button surfaces render in light and dark appearance.
+- Navigation among Home / Friends / Mine expands and contracts the dock. Captured intermediate animation frames and settled states.
+- Create sheet opens from the aligned button; back closes it.
+- Existing item details cover the bottom controls; back restores the dock.
+- Dark appearance survives process stop and restart.
+- No notes were created, completed, deleted or sent during these checks.
+
+System immersive-strength options were not changed during testing; effect policy is delegated to the native material.
+Reference: https://developer.huawei.com/consumer/cn/doc/HarmonyOS-Guides/arkts-immersive-light-sense-enable
+
+Latest screenshots: refined-home.jpeg, refined-mine.jpeg, refined-light-home.jpeg, refined-light-mine.jpeg,
+refined-friends.jpeg, refined-create.jpeg, refined-detail.jpeg.
+Build log: .local/ui-refinement-build.log

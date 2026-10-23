@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "reason_live_view",
+      "value": "在状态栏实时显示今天还没做的待办，避免忘记"
+    },
+    {
+      "name": "form_display_name",
+      "value": "今天的零星小记"
+    },
+    {
+      "name": "form_desc",
+      "value": "在桌面看今天还剩几件事"
+    }
+  ]
+}
